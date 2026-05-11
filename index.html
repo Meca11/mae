@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Dia das Mães</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f5d6df;
+    overflow:hidden;
+    font-family:Arial;
+}
+
+/* mini janela */
+
+.janela{
+    width:500px;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+    overflow:hidden;
+    animation: aparecer 1s ease;
+}
+
+.topo{
+    background:#ff7aa2;
+    padding:10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.bola{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+}
+
+.red{background:#ff5f57;}
+.yellow{background:#ffbd2e;}
+.green{background:#28c840;}
+
+.conteudo{
+    padding:40px;
+    text-align:center;
+}
+
+h1{
+    color:#e91e63;
+    font-size:40px;
+}
+
+p{
+    color:#666;
+    line-height:1.6;
+    font-size:18px;
+}
+
+button{
+    margin-top:20px;
+    padding:14px 28px;
+    border:none;
+    border-radius:30px;
+    background:#e91e63;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    background:#c2185b;
+}
+
+.coracao{
+    position:absolute;
+    color:#ff4d6d;
+    animation: subir 5s linear infinite;
+}
+
+@keyframes subir{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="janela">
+
+    <div class="topo">
+        <div class="bola red"></div>
+        <div class="bola yellow"></div>
+        <div class="bola green"></div>
+    </div>
+
+    <div class="conteudo">
+        <h1>Feliz Dia das Mães 💖</h1>
+
+        <p>
+            Obrigado por tudo.<br>
+            Por cada cuidado, abraço e amor.
+        </p>
+
+        <button onclick="abrirFotos()">
+            Ver surpresa
+        </button>
+    </div>
+
+</div>
+
+<script>
+
+function abrirFotos(){
+    window.location.href = "fotos.html";
+}
+
+function criarCoracao(){
+
+    const coracao = document.createElement("div");
+
+    coracao.classList.add("coracao");
+
+    coracao.innerHTML = "❤";
+
+    coracao.style.left = Math.random()*100 + "vw";
+
+    coracao.style.fontSize =
+    Math.random()*20 + 15 + "px";
+
+    document.body.appendChild(coracao);
+
+    setTimeout(()=>{
+        coracao.remove();
+    },5000);
+}
+
+setInterval(criarCoracao,300);
+
+</script>
+
+</body>
+</html>
